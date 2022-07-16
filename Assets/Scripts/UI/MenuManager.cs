@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
     
+    public bool mainMenu = false;
     public GameObject pauseMenu;
     private bool isPaused = false;
 
@@ -14,8 +16,11 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void TogglePause() {
-        if(isPaused) Unpause();
-        else Pause();
+        if(mainMenu) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        else {
+            if(isPaused) Unpause();
+            else Pause();
+        }
     }
 
     private void Unpause() {

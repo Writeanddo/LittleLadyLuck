@@ -11,6 +11,7 @@ public class PlayerPowers : MonoBehaviour {
 
     private PlayerTransform diceTransform;
     private PlayerGround ground;
+    private PlayerMovement move;
     private Rigidbody2D body;
 
     private int currPower = -1;
@@ -21,11 +22,13 @@ public class PlayerPowers : MonoBehaviour {
 
         ground = GetComponent<PlayerGround>();
         body = GetComponent<Rigidbody2D>();
-        // movement = GetComponent<PlayerMovement>();
+        move = GetComponent<PlayerMovement>();
         // jump = GetComponent<PlayerJump>();
     }
 
     void OnShift() {
+        if(move.frozen) return;
+
         if(!diceTransform.IsTransformed()) ChoosePower();
         else { // If we're in the middle of using a power
             if(currPower == 2) { // If we're currently transformed
@@ -52,6 +55,7 @@ public class PlayerPowers : MonoBehaviour {
     }
 
     public void RandomPower() {
+        Debug.Log("Random");
         if(diceTransform.IsTransformed()) return; // Skip if we're already in a power
 
         int rand;
@@ -64,6 +68,11 @@ public class PlayerPowers : MonoBehaviour {
 
         StartPower(rand);
         lastPower = rand;
+    }
+
+    public void TriggerPower(int power) {
+        if(diceTransform.IsTransformed()) return; // Skip if we're already in a power
+        StartPower(power);
     }
 
     private void StartPower(int power) {

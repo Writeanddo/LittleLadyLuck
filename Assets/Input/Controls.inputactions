@@ -33,18 +33,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Space",
+                    "name": "Cheat",
                     "type": "Button",
-                    "id": "6540704b-e847-4a6f-8a2e-5b26dc79c7f8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "E",
-                    "type": "Button",
-                    "id": "e8d17739-af5c-4a57-b0a0-cdd1ec2ed0e0",
+                    "id": "6f1b2998-e0a2-4f2c-9946-222d1c2dc30c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -75,6 +66,28 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "up",
+                    "id": "794085e7-c8d4-4143-9dba-57e203452276",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "up",
+                    "id": "7b8e970b-f1de-4613-851d-7abec322ae67",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "down",
                     "id": "6bf66542-febb-4d1c-9450-a6fe1d6be8d9",
                     "path": "<Keyboard>/s",
@@ -97,9 +110,31 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "left",
+                    "id": "1397ad11-8d46-4454-aa39-c8a90f96254f",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "right",
                     "id": "eabd75ba-29d5-4297-8e6c-834e90287672",
                     "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "f9a539e5-c707-4496-b544-fbf76fef7126",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -131,23 +166,56 @@
                 },
                 {
                     "name": "",
-                    "id": "1ae978b8-e27b-44b8-a630-83fc56619a4a",
-                    "path": "<Keyboard>/space",
+                    "id": "881b8e5d-f626-4952-8a32-8a528d5bbd21",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Space",
+                    "action": "Shift",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "f929b1ec-538a-4280-8a26-b137f9795fd6",
-                    "path": "<Keyboard>/e",
+                    "id": "6b0bd8c3-0613-47c1-a188-e1035dec15c2",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "E",
+                    "action": "Shift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5a19604-fbd5-4772-bb1d-46e104029006",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e0db1b75-3a74-4e2a-8f9b-4d6af2451687",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86ed8b8e-b142-47d1-9cd1-79c98c3300e1",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cheat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

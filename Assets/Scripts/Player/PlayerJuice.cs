@@ -12,11 +12,16 @@ public class PlayerJuice : MonoBehaviour {
     [SerializeField] private ParticleSystem jumpParticles;
     [SerializeField] private ParticleSystem landParticles;
     [SerializeField] private ParticleSystem afterImageParticles;
+    [SerializeField] private ParticleSystem dashParticles;
+    [SerializeField] private ParticleSystem superJumpParticles;
+    [SerializeField] private ParticleSystem deathParticles;
 
     [Header("Components - Audio")]
     [SerializeField] AudioSource jumpSFX;
     [SerializeField] AudioSource landSFX;
     [SerializeField] AudioSource dashSFX;
+    [SerializeField] AudioSource superJumpSFX;
+    [SerializeField] AudioSource deathSFX;
 
     [Header("Settings - Squash and Stretch")]
     [SerializeField] bool squashAndStretch;
@@ -94,13 +99,27 @@ public class PlayerJuice : MonoBehaviour {
         }
     }
 
+    public void DeathEffects() {
+        characterSprite.GetComponent<SpriteRenderer>().enabled = false;
+        if(deathSFX != null) deathSFX.Play();
+        if(deathParticles != null) deathParticles.Play();
+
+    }
+
+    public void RespawnEffects() {
+        characterSprite.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
     public void DashEffects() {
         if(afterImageParticles != null) afterImageParticles.Play();
+        if(dashParticles != null) dashParticles.Play();
         if(dashSFX != null && dashSFX.enabled) dashSFX.Play();
         CameraShake.GetInstance().ShakeCamera(shakeIntensity, shakeDuration);
     }
 
     public void SuperJumpEffects() {
+        if(superJumpSFX != null) superJumpSFX.Play();
+        if(superJumpParticles != null) superJumpParticles.Play();
         jumpEffects(); // Maybe remove this
         StartCoroutine(SuperJumpSpin(spinSpeed, spinDuration));
     }
@@ -124,7 +143,7 @@ public class PlayerJuice : MonoBehaviour {
         float t = 0;
         while(t <= 1f) {
             t += Time.deltaTime / duration;
-            characterSprite.transform.Rotate(rotation * speed);
+            characterSprite.transform.Rotate(rotation);
             yield return null;
         }
 

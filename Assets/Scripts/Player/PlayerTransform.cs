@@ -97,4 +97,38 @@ public class PlayerTransform : MonoBehaviour {
         playerCollider.offset = offset;
     }
 
+    public void InstantPersonify() {
+        if(transformed) {
+            transformed = false;
+            // Update player visuals and collider 
+            Vector2 pos = groundPoint.localPosition;
+            Vector2 colSize = playerCollider.size;
+            pos.y /= diceSize.y;
+            colSize /= diceSize;
+
+            // Update player movement stats
+            move.maxAcceleration /= movementMultipliers[0];
+            move.maxDecceleration /= movementMultipliers[0];
+            move.maxTurnSpeed /= movementMultipliers[0];
+
+            move.maxAirAcceleration /= movementMultipliers[1];
+            move.maxAirDeceleration /= movementMultipliers[1];
+            move.maxAirTurnSpeed /= movementMultipliers[1];
+
+            // jump.jumpHeight /= movementMultipliers[2];
+
+            move.maxSpeed /= movementMultipliers[3];
+
+            groundPoint.localPosition = pos;
+            playerCollider.size = colSize;
+            playerCollider.offset = offset;
+        }
+        
+        animator.ResetTrigger("Dieify");
+        animator.SetBool("Transformed", false);
+        animator.Play("Base Layer.Idle");
+
+        move.CancelDash();
+        jump.CancelSuperJump();
+    }
 }

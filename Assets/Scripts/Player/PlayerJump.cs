@@ -64,20 +64,24 @@ public class PlayerJump : MonoBehaviour {
         setPhysics();
         onGround = ground.GetOnGround();
 
-        //Jump buffer allows us to queue up a jump, which will play when we next hit the ground
-        if (jumpBuffer > 0) {
-            //Instead of immediately turning off "desireJump", start counting up...
-            //All the while, the DoAJump function will repeatedly be fired off
-            if (desiredJump) {
-                jumpBufferCounter += Time.deltaTime;
+        if(!move.frozen) {
+            //Jump buffer allows us to queue up a jump, which will play when we next hit the ground
+            if (jumpBuffer > 0) {
+                //Instead of immediately turning off "desireJump", start counting up...
+                //All the while, the DoAJump function will repeatedly be fired off
+                if (desiredJump) {
+                    jumpBufferCounter += Time.deltaTime;
 
-                if (jumpBufferCounter > jumpBuffer) {
-                    //If time exceeds the jump buffer, turn off "desireJump"
-                    desiredJump = false;
-                    jumpBufferCounter = 0;
+                    if (jumpBufferCounter > jumpBuffer) {
+                        //If time exceeds the jump buffer, turn off "desireJump"
+                        desiredJump = false;
+                        jumpBufferCounter = 0;
+                    }
                 }
             }
         }
+
+        
 
         //If we're not on the ground and we're not currently jumping, that means we've stepped off the edge of a platform.
         //So, start the coyote time counter...
@@ -177,6 +181,13 @@ public class PlayerJump : MonoBehaviour {
             juice.SuperJumpEffects();
         }
 
+        body.velocity = velocity;
+    }
+
+    public void CancelSuperJump() {
+        isJumpSuper = false;
+        velocity = body.velocity;
+        velocity.y = 0;
         body.velocity = velocity;
     }
 

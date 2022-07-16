@@ -122,6 +122,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d504e836bd2043d478fbb2e8a8974bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 15
-  fireRate: 3
-  projectile: {fileID: 2905959129849288191, guid: fe87373c0c2735a4e9c19c713e8e1c59, type: 3}
+  range: 10
+  fireRate: 2
+  projectiles:
+  - {fileID: 2905959129849288191, guid: fe87373c0c2735a4e9c19c713e8e1c59, type: 3}
+  - {fileID: 9210678941555439597, guid: 3de2706a557906540a71e5e43c95cde9, type: 3}
+  - {fileID: 5050462771829576799, guid: 7139e8f0c05e2e14dba6b2e1bbbb075c, type: 3}
+  - {fileID: 7414478443501543004, guid: 5d7513c05507bb348afdce090a03a59f, type: 3}
+  visibleObjects:
+    serializedVersion: 2
+    m_Bits: 192

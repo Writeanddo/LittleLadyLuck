@@ -112,6 +112,10 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("vSpeed", body.velocity.y);
     }
 
+    void OnCheat() {
+        Dash();
+    }
+
     public void JumpFreeze(float length) {
         StartCoroutine(TempFreeze(length));
     }
@@ -131,6 +135,13 @@ public class PlayerMovement : MonoBehaviour
         dashSpeed = dashDistance / dashTime;
         if(directionX != 0) dashSpeed *= directionX;
         else dashSpeed *= transform.localScale.x;
+    }
+
+    public void CancelDash() {
+        dashStart = -1;
+        velocity = body.velocity;
+        velocity.x = 0;
+        body.velocity = velocity;
     }
 
 
