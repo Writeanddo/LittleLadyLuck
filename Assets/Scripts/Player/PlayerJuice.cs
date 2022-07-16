@@ -11,10 +11,12 @@ public class PlayerJuice : MonoBehaviour {
     [Header("Components - Particles")]
     [SerializeField] private ParticleSystem jumpParticles;
     [SerializeField] private ParticleSystem landParticles;
+    [SerializeField] private ParticleSystem afterImageParticles;
 
     [Header("Components - Audio")]
     [SerializeField] AudioSource jumpSFX;
     [SerializeField] AudioSource landSFX;
+    [SerializeField] AudioSource dashSFX;
 
     [Header("Settings - Squash and Stretch")]
     [SerializeField] bool squashAndStretch;
@@ -24,9 +26,15 @@ public class PlayerJuice : MonoBehaviour {
     [SerializeField, Tooltip("How powerful should the effect be?")] public float jumpSqueezeMultiplier;
     [SerializeField] float landDrop = 1;
 
-    [Header("Tilting")]
+    [Header("Settings - Dash")]
+    [SerializeField] float shakeIntensity;
+    [SerializeField] float shakeDuration;
 
-    [SerializeField] bool leanForward;
+    [Header("Settings - Super Jump")]
+    [SerializeField] float spinSpeed;
+    [SerializeField] float spinDuration;
+
+    [Header("Tilting")]
     [SerializeField, Tooltip("How far should the character tilt?")] public float maxTilt;
     [SerializeField, Tooltip("How fast should the character tilt?")] public float tiltSpeed;
 
@@ -86,6 +94,17 @@ public class PlayerJuice : MonoBehaviour {
         }
     }
 
+    public void DashEffects() {
+        if(afterImageParticles != null) afterImageParticles.Play();
+        if(dashSFX != null && dashSFX.enabled) dashSFX.Play();
+        CameraShake.GetInstance().ShakeCamera(shakeIntensity, shakeDuration);
+    }
+
+    public void SuperJumpEffects() {
+        jumpEffects(); // Maybe remove this
+        StartCoroutine(SuperJumpSpin(spinSpeed, spinDuration));
+    }
+
     public void jumpEffects() {
         //Play these effects when the player jumps, courtesy of jump script
         // myAnimator.ResetTrigger("Landed");
@@ -98,6 +117,18 @@ public class PlayerJuice : MonoBehaviour {
         }
 
         if(jumpParticles != null) jumpParticles.Play();
+    }
+
+    IEnumerator SuperJumpSpin(float speed, float duration) {
+        Vector3 rotation = new Vector3(0, 0, speed);
+        float t = 0;
+        while(t <= 1f) {
+            t += Time.deltaTime / duration;
+            characterSprite.transform.Rotate(rotation * speed);
+            yield return null;
+        }
+
+        characterSprite.transform.rotation = Quaternion.identity;
     }
 
     IEnumerator JumpSqueeze(float xSqueeze, float ySqueeze, float seconds, float dropAmount, bool jumpSqueeze)

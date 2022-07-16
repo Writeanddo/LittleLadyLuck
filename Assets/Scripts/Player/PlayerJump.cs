@@ -4,6 +4,8 @@ public class PlayerJump : MonoBehaviour {
     [Header("Components")]
     [HideInInspector] public Rigidbody2D body;
     private PlayerGround ground;
+    private PlayerMovement move;
+    private PlayerTransform diceTransform;
     [HideInInspector] public Vector2 velocity;
     private PlayerJuice juice;
     // private characterMovement;
@@ -11,6 +13,8 @@ public class PlayerJump : MonoBehaviour {
 
     [Header("Jumping Stats")]
     [SerializeField, Range(1f, 10f)][Tooltip("Maximum jump height")] public float jumpHeight = 3f;
+    [SerializeField, Range(1f, 20f)][Tooltip("Maximum super jump height")] public float superJumpHeight = 8f;
+    [SerializeField, Range(0f, 1f)][Tooltip("Maximum super jump height")] public float superJumpFreeze = 0.5f;
     [SerializeField, Range(0.2f, 1.25f)][Tooltip("How long it takes to reach that height before coming back down")] public float timeToJumpApex = 0.5f;
     [SerializeField, Range(0f, 5f)][Tooltip("Gravity multiplier to apply when going up")] public float upwardMovementMultiplier = 1f;
     [SerializeField, Range(1f, 10f)][Tooltip("Gravity multiplier to apply when coming down")] public float downwardMovementMultiplier = 6.17f;
@@ -36,12 +40,15 @@ public class PlayerJump : MonoBehaviour {
     private bool pressingJump;
     public bool onGround;
     private bool currentlyJumping;
+    private bool isJumpSuper;
 
     // Start is called before the first frame update
     void Start() {
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<PlayerGround>();
+        move = GetComponent<PlayerMovement>();
         juice = GetComponent<PlayerJuice>();
+        diceTransform = GetComponent<PlayerTransform>();
 
         defaultGravityScale = 1f;
     }
@@ -112,11 +119,9 @@ public class PlayerJump : MonoBehaviour {
                 //Don't change it if Kit is stood on something (such as a moving platform)
                 gravMultiplier = defaultGravityScale;
             }
-            else
-            {
+            else {
                 //If we're using variable jump height...)
-                if (variablejumpHeight)
-                {
+                if (variablejumpHeight && !isJumpSuper) {
                     //Apply upward multiplier if player is rising and holding jump
                     if (pressingJump && currentlyJumping) gravMultiplier = upwardMovementMultiplier;
                     else gravMultiplier = jumpCutOff;//But apply a special downward multiplier if the player lets go of jump
@@ -127,6 +132,11 @@ public class PlayerJump : MonoBehaviour {
 
         //Else if going down...
         else if (body.velocity.y < -0.01f) {
+            if(isJumpSuper) {
+                isJumpSuper = false;
+                diceTransform.Personify();
+            }
+
             if (onGround) gravMultiplier = defaultGravityScale; //Don't change it if Kit is stood on something (such as a moving platform)
             else gravMultiplier = downwardMovementMultiplier; //Otherwise, apply the downward gravity multiplier as Kit comes back to Earth
         } else { // Else not moving vertically at all
@@ -140,6 +150,36 @@ public class PlayerJump : MonoBehaviour {
         body.velocity = new Vector3(velocity.x, Mathf.Clamp(velocity.y, -speedLimit, 100));
     }
 
+    // void OnSpace() {
+    //     SuperJump();
+    // }
+
+    public void SuperJump() {
+        diceTransform.Dieify();
+        move.JumpFreeze(superJumpFreeze);
+
+        velocity = body.velocity;
+
+        jumpSpeed = jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * body.gravityScale * superJumpHeight);
+
+        //If Kit is moving up or down when she jumps (such as when doing a double jump), change the jumpSpeed;
+        //This will ensure the jump is the exact same strength, no matter your velocity.
+        if (velocity.y > 0f) jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
+        else if (velocity.y < 0f) jumpSpeed += Mathf.Abs(body.velocity.y);
+
+        velocity.x = 0;
+        velocity.y += jumpSpeed;
+        currentlyJumping = true;
+        isJumpSuper = true;
+
+        if (juice != null) {
+            //Apply the jumping effects on the juice script
+            juice.SuperJumpEffects();
+        }
+
+        body.velocity = velocity;
+    }
+
     private void DoAJump() {
 
         //Create the jump, provided we are on the ground, in coyote time, or have a double jump available
@@ -147,6 +187,7 @@ public class PlayerJump : MonoBehaviour {
             desiredJump = false;
             jumpBufferCounter = 0;
             coyoteTimeCounter = 0;
+            isJumpSuper = false;
 
             //If we have double jump on, allow us to jump again (but only once)
             canJumpAgain = (maxAirJumps == 1 && canJumpAgain == false);

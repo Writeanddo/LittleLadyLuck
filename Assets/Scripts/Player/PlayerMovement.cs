@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,9 +8,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private PlayerGround ground;
     private PlayerJump jump;
+    private PlayerJuice juice;
     private Animator animator;
+    private PlayerTransform diceTransform;
 
     [Header("Movement Stats")]
+    [SerializeField, Range(0f, 50f)][Tooltip("Dash speed")] public float dashDistance = 5f;
+    [SerializeField, Range(0f, 2f)][Tooltip("Dash time")] public float dashTime = 0.75f;
+    [SerializeField, Range(0f, 2f)][Tooltip("Dash slow multiplier")] public float dashEndSlow = 0.5f;
     [SerializeField, Range(0f, 20f)][Tooltip("Maximum movement speed")] public float maxSpeed = 10f;
     [SerializeField, Range(0f, 100f)][Tooltip("How fast to reach max speed")] public float maxAcceleration = 52f;
     [SerializeField, Range(0f, 100f)][Tooltip("How fast to stop after letting go")] public float maxDecceleration = 52f;
@@ -30,10 +36,13 @@ public class PlayerMovement : MonoBehaviour
     private float acceleration;
     private float deceleration;
     private float turnSpeed;
+    private float dashStart;
+    private float dashSpeed;
 
     [Header("Current State")]
     public bool onGround;
     public bool pressingKey;
+    public bool frozen;
 
 
     private void Awake() {
@@ -41,7 +50,9 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<PlayerGround>();
         jump = GetComponent<PlayerJump>();
+        juice = GetComponent<PlayerJuice>();
         animator = GetComponentInChildren<Animator>();
+        diceTransform = GetComponent<PlayerTransform>();
     }
 
     public void OnMove(InputValue value) {
@@ -50,6 +61,10 @@ public class PlayerMovement : MonoBehaviour
 
         jump.SetJumpPressed(movement.y > 0);
     }
+
+    // void OnShift() {
+    //     Dash();
+    // }
 
     // Update is called once per frame
     void Update() {
@@ -73,14 +88,49 @@ public class PlayerMovement : MonoBehaviour
         //Get the Rigidbody's current velocity
         velocity = body.velocity;
 
-        //Calculate movement, depending on whether "Instant Movement" has been checked
-        if (useAcceleration || !onGround)  runWithAcceleration();
-        else runWithoutAcceleration();
+        if(!frozen) {
+            if(dashStart > 0) {
+                if(Time.time - dashStart > dashTime) { // If we're done dashing
+                    dashStart = -1;
+                    diceTransform.Personify();
+                    velocity.x *= dashEndSlow;
+                } else { // If we're still dashing
+                    velocity.y = 0;
+                    velocity.x = dashSpeed;
+                }
+                body.velocity = velocity;
+            } else {
+                //Calculate movement, depending on whether "Instant Movement" has been checked
+                if (useAcceleration || !onGround)  runWithAcceleration();
+                else runWithoutAcceleration();
+            }
+        }        
 
         // Update animator
         animator.SetBool("Grounded", onGround);
         animator.SetFloat("Speed", Mathf.Abs(body.velocity.x));
         animator.SetFloat("vSpeed", body.velocity.y);
+    }
+
+    public void JumpFreeze(float length) {
+        StartCoroutine(TempFreeze(length));
+    }
+
+    private IEnumerator TempFreeze(float length) {
+        frozen = true;
+        yield return new WaitForSeconds(length);
+        frozen = false;
+    }
+
+    public void Dash() {
+        if(frozen) return;
+
+        diceTransform.Dieify();
+        juice.DashEffects();
+        dashStart = Time.time;
+        dashSpeed = dashDistance / dashTime;
+        if(directionX != 0) dashSpeed *= directionX;
+        else dashSpeed *= transform.localScale.x;
     }
 
 
@@ -117,4 +167,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public Vector2 GetVelocity() { return velocity; }
+
+    public void SetFrozen(bool val) { frozen = val; }
 }
