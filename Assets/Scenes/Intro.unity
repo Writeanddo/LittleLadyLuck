@@ -314,6 +314,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5369839681117911032, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369839681117911032, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: zooms.Array.size
       value: 11

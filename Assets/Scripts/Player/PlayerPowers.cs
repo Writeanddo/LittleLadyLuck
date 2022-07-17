@@ -55,7 +55,6 @@ public class PlayerPowers : MonoBehaviour {
     }
 
     public void RandomPower() {
-        Debug.Log("Random");
         if(diceTransform.IsTransformed()) return; // Skip if we're already in a power
 
         int rand;
