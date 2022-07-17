@@ -112,6 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7ca56bc39700d4cbeeafa6cdcef153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deltaSpin: 1
-  spinSpeedRange: {x: 2, y: 4}
+  deltaSpin: 6
+  spinSpeedRange: {x: 12, y: 24}
   spin: 0
