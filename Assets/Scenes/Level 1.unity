@@ -3551,6 +3551,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4964214256709204192, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154932075666245545, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_text
+      value: Sorry for dropping you... On the bright side, you can use that spell
+        I bought from that old goblin with the missing teeth. He seemed like a nice
+        fellow.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154932075666245545, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_margin.x
+      value: -59.7069
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154932075666245545, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_margin.y
+      value: -28.12131
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154932075666245545, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_margin.z
+      value: -619.37067
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536607955726564727, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
 --- !u!1 &1599300203 stripped

@@ -14,7 +14,7 @@ public class Parallax : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void LateUpdate() {
+    void FixedUpdate() {
         Vector2 dist = new Vector2((cam.position.x - camStartPos.x) * parallaxEffect, (cam.position.y - camStartPos.y) * parallaxEffect);
         transform.position = startPos + dist;
 

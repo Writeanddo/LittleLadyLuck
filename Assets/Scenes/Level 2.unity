@@ -1493,7 +1493,7 @@ PrefabInstance:
     - target: {fileID: 7430957190323617533, guid: b53f9da36c6dc23468049a0ac29bc7b7, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: b2e04daedd8a4d74ab115cb62602deea, type: 3}
+      objectReference: {fileID: 8300000, guid: b4abc02ec3662a74d997cec729cd0522, type: 3}
     - target: {fileID: 8126533711052011362, guid: b53f9da36c6dc23468049a0ac29bc7b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.9392002
@@ -1517,11 +1517,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 797624309206280616, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -33
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 797624309206280616, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1524229227312765809, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
       propertyPath: m_Name
@@ -1573,8 +1573,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544105254943154247, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
       propertyPath: m_text
-      value: '"Shift while rising to rise, while falling to fall, and while peaking
-        to dash."'
+      value: Shift while rising to rise, while falling to fall, and while peaking
+        to dash.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544105254943154247, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_fontSize
+      value: 90.2
       objectReference: {fileID: 0}
     - target: {fileID: 4544105254943154247, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
       propertyPath: m_margin.w
@@ -1587,6 +1591,26 @@ PrefabInstance:
     - target: {fileID: 4544105254943154247, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
       propertyPath: m_margin.z
       value: -472.47986
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544105254943154247, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e76cdae49ab6ac4b97b13f3779b54ef, type: 2}
+    - target: {fileID: 4544105254943154247, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_fontStyle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544105254943154247, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 90.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544105254943154247, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 940176550886411618, guid: 0e76cdae49ab6ac4b97b13f3779b54ef, type: 2}
+    - target: {fileID: 4544105254943154247, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4964214256709204192, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1603,7 +1627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8536607955726564727, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f0ca4529c2351a409919f19c03f3dcf, type: 3}

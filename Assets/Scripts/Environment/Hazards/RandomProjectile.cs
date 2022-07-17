@@ -11,6 +11,10 @@ public class RandomProjectile : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = toPlayer.normalized * speed;
     }
 
+    public void SetDirection(Vector2 direction) {
+        GetComponent<Rigidbody2D>().velocity = direction.normalized * speed;
+    }
+
     void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player") {
             if(power == -1) other.gameObject.GetComponent<PlayerPowers>().RandomPower();

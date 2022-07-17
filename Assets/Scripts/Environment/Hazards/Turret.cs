@@ -11,19 +11,24 @@ public class Turret : MonoBehaviour {
     private Transform player;
     private float lastShot = -1;
     private List<int> sequence;
+    private Vector2 direction;
 
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         sequence = GeneratePermutation();
+
+        if(transform.childCount > 0) direction = transform.GetChild(0).transform.position - transform.position;
+        else direction = Vector2.zero;
     }
     
     void Update() {
         if(Time.time - lastShot > fireRate) {
             Vector2 toPlayer = player.position - transform.position;
             RaycastHit2D hit = Physics2D.Raycast(transform.position, toPlayer, range, visibleObjects);
-            if(hit.collider != null && hit.collider.tag == "Player") { // If Player is in range and line of sight
-                Instantiate(RandomProj(), transform.position, Quaternion.identity);
+            if(range == -1 || (hit.collider != null && hit.collider.tag == "Player")) { // If Player is in range and line of sight
+                GameObject proj = Instantiate(RandomProj(), transform.position, Quaternion.identity);
+                if(direction != Vector2.zero) proj.GetComponent<RandomProjectile>().SetDirection(direction);
                 lastShot = Time.time;
             }
         }
