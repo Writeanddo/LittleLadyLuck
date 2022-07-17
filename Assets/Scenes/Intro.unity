@@ -138,12 +138,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7104221783722206815, guid: 1c38e4271f4c58a4abd33a552c39aff5, type: 2}
-  m_audioClip: {fileID: 8300000, guid: a12a081464d2b0b48af4a194e1b32b08, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 279bae1807c7c974d924b371ab09d01c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -315,10 +315,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5369839681117911032, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
-      propertyPath: m_ScreenMatchMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5369839681117911032, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: m_MatchWidthOrHeight
       value: 1
       objectReference: {fileID: 0}
@@ -332,11 +328,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: zooms.Array.data[0]
-      value: 1
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: zooms.Array.data[1]
-      value: 1.05
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: zooms.Array.data[3]
@@ -420,43 +416,43 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 7fe767fa0ee69ad4cbcd3e61f6c4dbd6, type: 3}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: durations.Array.data[0]
-      value: 2
+      value: 4.744
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: durations.Array.data[1]
-      value: 2
+      value: 2.209
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: durations.Array.data[2]
-      value: 0.8
+      value: 1.675
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: durations.Array.data[3]
-      value: 0.8
+      value: 1.442
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: durations.Array.data[4]
-      value: 0.8
+      value: 1.302
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: durations.Array.data[5]
-      value: 2
+      value: 2.954
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: durations.Array.data[6]
-      value: 2
+      value: 3.604
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: durations.Array.data[7]
-      value: 0.8
+      value: 1.442
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: durations.Array.data[8]
-      value: 0.8
+      value: 2.081
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: durations.Array.data[9]
-      value: 2
+      value: 1.716
       objectReference: {fileID: 0}
     - target: {fileID: 5369839681486754581, guid: 515a62cf6fe85954b8660f7dfc830ed5, type: 3}
       propertyPath: durations.Array.data[10]

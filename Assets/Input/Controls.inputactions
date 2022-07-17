@@ -31,15 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Cheat",
-                    "type": "Button",
-                    "id": "6f1b2998-e0a2-4f2c-9946-222d1c2dc30c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -155,6 +146,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a8ff3fd6-656c-4c7f-9148-0c32ada51c4c",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f86438a0-594c-4237-a30f-fabf509cade1",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -205,17 +207,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shift",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "86ed8b8e-b142-47d1-9cd1-79c98c3300e1",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cheat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
